@@ -1,0 +1,95 @@
+{
+  "name": "protocol",
+  "displayName": "Protocol",
+  "description": "",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "protocol.createRequest",
+        "title": "Protocol: Create a request",
+        "icon": "$(add)"
+      },
+      {
+        "command": "protocol.deleteRequest",
+        "title": "Protocol: Delete request",
+        "icon": "$(trash)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "protocol",
+          "title": "Protocol",
+          "icon": "media/protocol-icon.png"
+        }
+      ]
+    },
+    "views": {
+      "protocol": [
+        {
+          "id": "protocol.requestsList",
+          "name": "Requests",
+          "type": "tree",
+          "visibility": "visible",
+          "icon": "media/protocol-icon.png"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "protocol.requestsList",
+        "contents": "No requests yet!\n[Create a request](command:protocol.createRequest)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "protocol.createRequest",
+          "group": "navigation@1"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "protocol.deleteRequest",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir dist",
+    "watch-tests": "tsc -p . -w --outDir dist",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.107.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "esbuild": "^0.27.1",
+    "esbuild-plugin-copy": "^2.1.1",
+    "eslint": "^9.39.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1"
+  }
+}
