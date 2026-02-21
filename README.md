@@ -11,6 +11,29 @@ A VS Code extension for managing and testing HTTP requests directly within the e
 
 ## Installation
 
+### Installing the VSIX Extension
+
+You can install the `protocol-1.0.0.vsix` file in VS Code using one of the following methods:
+
+#### Method 1: Using the VS Code UI
+
+1. Open VS Code
+2. Go to the Extensions view (press `Ctrl+Shift+X` or `Cmd+Shift+X` on macOS)
+3. Click on the **More Actions** menu (three dots icon) at the top
+4. Select **Install from VSIX...**
+5. Navigate to and select the `protocol-1.0.0.vsix` file
+6. Click **Install**
+
+#### Method 2: Using the Command Line
+
+Run the following command in your terminal:
+
+```bash
+code --install-extension protocol-1.0.0.vsix
+```
+
+### Development Setup
+
 To install and set up this extension for development:
 
 ```bash
